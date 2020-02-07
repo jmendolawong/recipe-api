@@ -5,31 +5,24 @@ const cors = require('cors')
 const helmet = require('helmet')
 const { NODE_ENV, CLIENT_ORIGIN } = require('./config.js')
 
-// Init app to express object
 const app = express();
 
 /***********  Middleware ***********/
-// For cross domain access
-app.use(cors())
-// Helmet to hide sensitive info in res header
-// To be placed *before* CORS according to bloc content
 app.use(helmet())
-
-
-
-// Logging middleware, mostly for dev env
+app.use(
+  cors({
+    origin: CLIENT_ORIGIN
+  })
+)
 const morganSetting = NODE_ENV === 'production' ? 'tiny' : 'dev';
 app.use(morgan(morganSetting))
 
-// Authorization
+// API validation from the client
+/*
 app.use(function validateBearerToken(req, res, next) {
-  // Server-side
   const apiToken = process.env.API_TOKEN;
-  // Client supplied
   const authToken = req.get('Authorization');
 
-  // If client doesn't supply or the their token doesn't match
-  // serverside, then error 'unauthorized access'
   if (!authToken || authToken.split(' ')[1] !== apiToken) {
     return res.status(401).json({
       error: { message: 'Unauthorized access' }
@@ -37,17 +30,14 @@ app.use(function validateBearerToken(req, res, next) {
   }
   next();
 })
-
+*/
 
 /***********  Endpoints ***********/
 
-app.get('/api/*', (req, res) => {
-  res.json({ "test": "works!" });
-});
 
 
+/***********  Error handling ***********/
 
-/***********  Error Handling ***********/
 app.use((error, req, res, next) => {
   let response;
   if (NODE_ENV === 'production') {
