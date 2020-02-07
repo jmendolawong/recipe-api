@@ -9,16 +9,17 @@ const { NODE_ENV, CLIENT_ORIGIN } = require('./config.js')
 const app = express();
 
 /***********  Middleware ***********/
-// Helmet to hide sensitive info in res header
-// To be placed *before* CORS according to bloc content
-app.use(helmet())
-
 // For cross domain access
 app.use(
   cors({
     origin: CLIENT_ORIGIN
   })
 )
+// Helmet to hide sensitive info in res header
+// To be placed *before* CORS according to bloc content
+app.use(helmet())
+
+
 
 // Logging middleware, mostly for dev env
 const morganSetting = NODE_ENV === 'production' ? 'tiny' : 'dev';
