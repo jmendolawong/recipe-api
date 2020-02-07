@@ -10,11 +10,7 @@ const app = express();
 
 /***********  Middleware ***********/
 // For cross domain access
-app.use(
-  cors({
-    origin: CLIENT_ORIGIN
-  })
-)
+app.use(cors())
 // Helmet to hide sensitive info in res header
 // To be placed *before* CORS according to bloc content
 app.use(helmet())
