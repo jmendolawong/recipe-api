@@ -2,7 +2,7 @@ const { expect } = require('chai')
 const knex = require('knex')
 const app = require('../src/app')
 
-describe.only('Recipes endpoings', function () {
+describe.only('Recipes endpoints', function () {
   let db
 
   before('make knex instance', () => {
@@ -17,42 +17,53 @@ describe.only('Recipes endpoings', function () {
 
   before('Clean table', () => db('recipes').truncate())
 
-  context('Given recipes in the db', () => {
-    const testRecipes = [
-      {
-        "id": 1, "name": "Apple Pie", "note": "I love this recipe because it has apples, pears and bananas",
-        "url": "https://www.bbcgoodfood.com/recipes/collection/apple"
-      },
-      {
-        "id": 2, "name": "Fruit Medley", "note": "I love this recipe because it has peaches, oranges and grapes",
-        "url": "https://www.bbcgoodfood.com/recipes/collection/apple"
-      },
-      {
-        "id": 3, "name": "Chicken Pot Pie", "note": "The crust is amazing!",
-        "url": "https://www.bbcgoodfood.com/recipes/collection/apple"
-      },
-      {
-        "id": 4, "name": "So Delicious", "note": "So tasty and delicious",
-        "url": "https://www.bbcgoodfood.com/recipes/collection/apple"
-      },
-      {
-        "id": 5, "name": "Good Food", "note": "Love this!!!",
-        "url": "https://www.bbcgoodfood.com/recipes/collection/apple"
-      },
-    ];
-
-    beforeEach('Seed table', () => {
-      return db
-        .insert(testRecipes)
-        .into('recipes')
+  describe('GET /api/catalog', () => {
+    
+    context('Given no recipes in the db', () => {
+      it.skip('responds 200 and empty list', () => {
+        return supertest(app)
+          .get('/api/catalog')
+          .expect(200, [])
+      })
     })
 
-    it('GET all recipes, responds 200 and all recipes', () => {
-      return supertest(app)
-        .get('/catalog')
-        .expect(200)
+    context('Given recipes in the db', () => {
+      const testRecipes = [
+        {
+          "id": 1, "name": "Apple Pie", "note": "I love this recipe because it has apples, pears and bananas",
+          "url": "https://www.bbcgoodfood.com/recipes/collection/apple"
+        },
+        {
+          "id": 2, "name": "Fruit Medley", "note": "I love this recipe because it has peaches, oranges and grapes",
+          "url": "https://www.bbcgoodfood.com/recipes/collection/apple"
+        },
+        {
+          "id": 3, "name": "Chicken Pot Pie", "note": "The crust is amazing!",
+          "url": "https://www.bbcgoodfood.com/recipes/collection/apple"
+        },
+        {
+          "id": 4, "name": "So Delicious", "note": "So tasty and delicious",
+          "url": "https://www.bbcgoodfood.com/recipes/collection/apple"
+        },
+        {
+          "id": 5, "name": "Good Food", "note": "Love this!!!",
+          "url": "https://www.bbcgoodfood.com/recipes/collection/apple"
+        },
+      ];
+
+      beforeEach('Seed table', () => {
+        return db
+          .insert(testRecipes)
+          .into('recipes')
+      })
+
+      it('GET all recipes, responds 200 and all recipes', () => {
+        return supertest(app)
+          .get('api/catalog')
+          .expect(200, testRecipes)
+      })
     })
+
   })
-
 
 })

@@ -1,6 +1,6 @@
 const RecipesService = {
-  getAllRecipes(db) {
-    return db
+  getAllRecipes(knex) {
+    return knex
       .select('*')
       .from('recipes')
   },

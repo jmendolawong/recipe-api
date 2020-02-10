@@ -18,21 +18,23 @@ recipesRouter
     RecipesService.getAllRecipes(
       req.app.get('db')
     )
-      .then(recipes => res.json(recipes))
+      .then(recipes => {
+        res.json(recipes)
+      })
       .catch(next)
   })
 
 /*
 recipesRouter
-  .route(`/catalog/:recipeId`
-    .get((req, res, next) => {
+.route(`/catalog/:recipeId`
+  .get((req, res, next) => {
 
-    })
-    .delete((req, res, next) => {
+  })
+  .delete((req, res, next) => {
 
-    })
+  })
 
-  */
+*/
 
- module.exports = recipesRouter
+module.exports = recipesRouter
 
