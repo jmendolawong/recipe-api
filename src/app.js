@@ -5,7 +5,7 @@ const cors = require('cors')
 const helmet = require('helmet')
 const { NODE_ENV, CLIENT_ORIGIN } = require('./config.js')
 
-const recipesRouter = './recipes/recipes-router'
+const recipesRouter = require('./recipes/recipes-router')
 
 const app = express();
 
@@ -38,6 +38,9 @@ app.use(function validateBearerToken(req, res, next) {
 
 
 /***********  Endpoints ***********/
+app.get('/api/*', (req, res) => {
+  res.json({ "test": "works!" });
+});
 
 app.use('/catalog', recipesRouter)
 

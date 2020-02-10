@@ -6,7 +6,7 @@ describe.only('Recipes endpoings', function () {
   let db
 
   before('make knex instance', () => {
-    db = KNEX({
+    db = knex({
       client: 'pg',
       connection: process.env.TEST_DB_URL,
     })
@@ -20,23 +20,23 @@ describe.only('Recipes endpoings', function () {
   context('Given recipes in the db', () => {
     const testRecipes = [
       {
-        "id": 1, "name": "Apple Pie", "why": "I love this recipe because it has apples, pears and bananas",
+        "id": 1, "name": "Apple Pie", "note": "I love this recipe because it has apples, pears and bananas",
         "url": "https://www.bbcgoodfood.com/recipes/collection/apple"
       },
       {
-        "id": 2, "name": "Fruit Medley", "why": "I love this recipe because it has peaches, oranges and grapes",
+        "id": 2, "name": "Fruit Medley", "note": "I love this recipe because it has peaches, oranges and grapes",
         "url": "https://www.bbcgoodfood.com/recipes/collection/apple"
       },
       {
-        "id": 3, "name": "Chicken Pot Pie", "why": "The crust is amazing!",
+        "id": 3, "name": "Chicken Pot Pie", "note": "The crust is amazing!",
         "url": "https://www.bbcgoodfood.com/recipes/collection/apple"
       },
       {
-        "id": 4, "name": "So Delicious", "why": "So tasty and delicious",
+        "id": 4, "name": "So Delicious", "note": "So tasty and delicious",
         "url": "https://www.bbcgoodfood.com/recipes/collection/apple"
       },
       {
-        "id": 5, "name": "Good Food", "why": "Love this!!!",
+        "id": 5, "name": "Good Food", "note": "Love this!!!",
         "url": "https://www.bbcgoodfood.com/recipes/collection/apple"
       },
     ];
