@@ -21,7 +21,7 @@ const morganSetting = NODE_ENV === 'production' ? 'tiny' : 'dev';
 app.use(morgan(morganSetting))
 
 // API validation from the client
-
+/*
 app.use(function validateBearerToken(req, res, next) {
   const apiToken = process.env.API_TOKEN
   const authToken = req.get('Authorization')
@@ -35,13 +35,14 @@ app.use(function validateBearerToken(req, res, next) {
   }
   next();
 })
-
+*/
 
 /***********  Endpoints ***********/
 app.use('/api/catalog', recipesRouter)
 
-
-
+app.get('/', (req, res) => {
+  res.send('Hello, world!')
+})
 
 
 /***********  Error handling ***********/
