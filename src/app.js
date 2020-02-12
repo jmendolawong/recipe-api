@@ -36,10 +36,6 @@ app.use(function validateBearerToken(req, res, next) {
 /***********  Endpoints ***********/
 app.use('/api/catalog', recipesRouter)
 
-app.get('/', (req, res) => {
-  res.send('Hello, world!')
-})
-
 
 /***********  Error handling ***********/
 
