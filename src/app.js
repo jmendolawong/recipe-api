@@ -9,6 +9,8 @@ const recipesRouter = require('./recipes/recipes-router')
 
 const app = express();
 
+
+
 /***********  Middleware ***********/
 app.use(helmet())
 app.use(
@@ -20,25 +22,11 @@ app.use(
 const morganSetting = NODE_ENV === 'production' ? 'tiny' : 'dev';
 app.use(morgan(morganSetting))
 
-// API validation from the client
-/*
-app.use(function validateBearerToken(req, res, next) {
-  const apiToken = process.env.API_TOKEN
-  const authToken = req.get('Authorization')
 
-  if (!authToken || authToken.split(' ')[1] !== apiToken) {
-    logger.error(`Unauthorized request to path: ${req.path}`);
-
-    return res.status(401).json({
-      error: 'Unauthorized access'
-    })
-  }
-  next();
-})
-*/
 
 /***********  Endpoints ***********/
 app.use('/api/catalog', recipesRouter)
+
 
 
 /***********  Error handling ***********/
