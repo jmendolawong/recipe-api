@@ -1,5 +1,9 @@
 # Recipe Catalog API
 
+## Introduction
+Recipe Catalog API is server side for the client Recipe Catalog.
+The client can be tested out [here](https://recipes-app-zeta.now.sh/)
+
 ### Database
 To access the database use the URL below to connect to the client
  - https://powerful-bastion-67782.herokuapp.com
