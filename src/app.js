@@ -9,8 +9,6 @@ const recipesRouter = require('./recipes/recipes-router')
 
 const app = express();
 
-
-
 /***********  Middleware ***********/
 app.use(helmet())
 app.use(
