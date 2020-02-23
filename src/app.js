@@ -15,9 +15,10 @@ const app = express();
 app.use(helmet())
 app.use(
   cors({
-    origin: CLIENT_ORIGIN
-  })
-)
+    origin: CLIENT_ORIGIN,
+  }
+  )
+
 
 const morganSetting = NODE_ENV === 'production' ? 'tiny' : 'dev';
 app.use(morgan(morganSetting))
