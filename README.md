@@ -4,7 +4,7 @@
 Recipe Catalog is an experimental React application that digitizes recipe books. 
 Users are able to bookmark recipes they discover online, storing them in the Recipe Catalog.
 
-![Home Page](./public/images/home.jpg)
+![Home Page](./images/home.jpg)
 
 #### Click [here](https://recipes-app-zeta.now.sh/) to test out the app 
 
@@ -13,11 +13,11 @@ All recipes are bookmarked in a easy to read display.
 Adding a recipe is simply inputting the name, website link, and a note to attach to the recipe.
 The name and the note is on the recipe page. Clicking on the title opens up the website in another tab.
 
-![Catalog](./public/images/catalog.jpg)
+![Catalog](./images/catalog.jpg)
 
-![Add Recipe](./public/images/add_recipe.jpg)
+![Add Recipe](./images/add_recipe.jpg)
 
-![Recipe](./public/images/recipe.jpg)
+![Recipe](./images/recipe.jpg)
 
 
 ## Getting Started with the Client
